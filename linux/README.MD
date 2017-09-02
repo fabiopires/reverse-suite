@@ -20,6 +20,53 @@ Reverse Suite for Linux
      -x <file.apk>,            decompile the apk, and run luyten to verify the source code
      -o <file.apk>,            the name of apk that gets written (use with -b)
 ```
+Disassemble the apk:
+```bash
+# ./rsuite.sh -d test.apk 
+                                                                                                                            
+Provide a name to save this app: test 
+I: Using Apktool 2.2.4 on test.apk
+I: Loading resource table...
+I: Decoding AndroidManifest.xml with resources...
+I: Loading resource table from file: /root/.local/share/apktool/framework/1.apk
+I: Regular manifest package...
+I: Decoding file-resources...
+I: Decoding values */* XMLs...
+I: Baksmaling classes.dex...
+I: Copying assets and libs...
+I: Copying unknown files...
+I: Copying original files...
+
+Extracted files can be found here: "/root/tools/git_tools/reverse-suite/output/test"
+```
+List all the disassembled apps:
+```bash
+root@attacker:~/tools/git_tools/reverse-suite/linux# ./rsuite.sh -l
+                                                                                                                            
+The applications you've extracted are: 
+  test
+
+To build one of the apps use: ./rsuite.sh -b test -o newfile.apk
+```
+Build an app:
+```bash
+root@attacker:~/tools/git_tools/reverse-suite/linux# ./rsuite.sh -b test -o new_apk_tampered.apk
+                                                         
+Building the app
+I: Using Apktool 2.2.4
+I: Checking whether sources has changed...
+I: Smaling smali folder into classes.dex...
+I: Checking whether resources has changed...
+I: Building resources...
+I: Copying libs... (/lib)
+I: Building apk file...
+I: Copying unknown files/dir...
+Running alignment tool for Android application files
+Signing the app
+
+All done. You can now install the app: new_apk_tampered.apk
+```
+
 
 **Version of used tools:**
 
